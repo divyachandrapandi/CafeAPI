@@ -1,0 +1,43 @@
+1. SET UP FLASK SERVER
+
+2. CREATED A CAFE DATABASE USING SQLALCHEMY
+
+3. IN random_cafe(), GET RANDOM CAFE ROW FROM DATABASE BY QUERY.ALL
+
+4. THEN THE RANDOMLY GENERATED CAFE ROW IS SERIALISED USING A BUILT IN METHOD CALLED jsonify()
+
+5.  THE jsonify() CONVERTS DATA OBJECT INTO JSON, HERE
+                                                ~ RETURN THE JSON TO THE WEB IN ROUTE (LOCALHOST/RANDOM)
+6. PARAMETER FOR JSONIFY IS
+        ~  return jsonify(username=g.user.username,
+                   email=g.user.email,
+                   id=g.user.id)
+        ~ to give dictionary of cafe data object and its field with **kwargs
+        ~ we can some field (eg.id, num_of seats) and also create another key to have a dictionary of fields
+        ~ to avoid error prone careate a to_Dict() function,
+                                        * in which empty_dict created
+                                        * looping through each column and getting column name as key
+                                        * getting column value respective to key is value
+        ~ then the cafe = to_dict(random_Cafe)
+
+7. TO GET ALL CAFE USE query.all
+
+8. TO GET CAFE BY LOCATION
+                ~ USE READ ALL QUERY
+                ~ IF LOCATION COLUMN == URL PARAMETER
+                ~ THEN LIST ALL THE CAFE IN LOCATION
+
+9. USING POSTMAN
+            POSTMAN USED TO API TESTING
+            THE NEW COLLECTION CREATE AND ALL REQUEST IS ADDED
+10. POST NEW CAFE IN WEBSITE BY USER
+            INSTEAD OF WTFORMS CREATION WE CAN CREATE POST
+            IN BODY, ENTER KEY AND VALUE PAIR
+            IN MAIN.PY, CREATE ADD FUNCTION TO ADD NEW CAFE ROW TO TABLE USING ADD QUERY AND
+            RECEIVE THE VALUE ENTERED AS REQUEST.FORM.GET("NAME") OR REQUEST.FORM["NAME"]
+            RETURN SUCCESS MESSAGE AS JSON
+
+11. TO UPDATE A INDIVIDUAL CAFE BY PATCH
+            ~ UPDATE THE DATABASE AND COMMIT, GET ID AS URL PARAMETER, FIELD TO BE CHANGED AS QUERY IN URL
+
+12. DELETE A CAFE , DELETE REQUEST
